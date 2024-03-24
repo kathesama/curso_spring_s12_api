@@ -1,6 +1,0 @@
-CREATE TABLE products (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(45) NOT NULL,
-  price DOUBLE NOT NULL,
-  description TEXT
-);
