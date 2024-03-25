@@ -10,7 +10,7 @@ import com.kahesama.demo.curso_spring_s12_api.repositories.RoleRepository;
 import com.kahesama.demo.curso_spring_s12_api.repositories.UserRepository;
 import com.kahesama.demo.curso_spring_s12_api.services.interfaces.UserServiceInt;
 import lombok.RequiredArgsConstructor;
-//import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,7 +26,7 @@ public class UserServiceIntImpl implements UserServiceInt {
     private final UserRepository repository;
     private final RoleRepository roleRepository;
     private final UserPersistenceMapper mapper;
-//    private final PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
     /**
      * Retrieves a list of all users.
@@ -54,6 +54,7 @@ public class UserServiceIntImpl implements UserServiceInt {
         UserEntity userEntity = mapper.toUserEntity(user);
 
         optionalUserRole.ifPresent(roleEntity -> userEntity.getRoles().add(roleEntity));
+        userEntity.setPassword(passwordEncoder.encode((user.getPassword())));
 
         return mapper.toUser(repository.save(userEntity));
     }
