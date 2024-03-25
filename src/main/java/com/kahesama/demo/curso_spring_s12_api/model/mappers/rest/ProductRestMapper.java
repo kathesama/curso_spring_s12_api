@@ -1,4 +1,4 @@
-package com.kahesama.demo.curso_spring_s12_api.model.mappers;
+package com.kahesama.demo.curso_spring_s12_api.model.mappers.rest;
 import com.kahesama.demo.curso_spring_s12_api.model.Product;
 import com.kahesama.demo.curso_spring_s12_api.model.request.ProductCreateRequest;
 import com.kahesama.demo.curso_spring_s12_api.model.response.ProductResponse;

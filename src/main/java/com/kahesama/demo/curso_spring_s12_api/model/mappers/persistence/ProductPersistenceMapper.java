@@ -1,4 +1,4 @@
-package com.kahesama.demo.curso_spring_s12_api.model.mappers;
+package com.kahesama.demo.curso_spring_s12_api.model.mappers.persistence;
 
 import com.kahesama.demo.curso_spring_s12_api.entities.ProductEntity;
 import com.kahesama.demo.curso_spring_s12_api.model.Product;

@@ -1,9 +1,8 @@
 package com.kahesama.demo.curso_spring_s12_api.services;
 
-import com.kahesama.demo.curso_spring_s12_api.entities.ProductEntity;
 import com.kahesama.demo.curso_spring_s12_api.exceptions.ProductNotFoundException;
 import com.kahesama.demo.curso_spring_s12_api.model.Product;
-import com.kahesama.demo.curso_spring_s12_api.model.mappers.ProductPersistenceMapper;
+import com.kahesama.demo.curso_spring_s12_api.model.mappers.persistence.ProductPersistenceMapper;
 import com.kahesama.demo.curso_spring_s12_api.repositories.ProductRepository;
 import com.kahesama.demo.curso_spring_s12_api.services.interfaces.ProductServiceInt;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor

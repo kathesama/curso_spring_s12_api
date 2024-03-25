@@ -1,6 +1,6 @@
 package com.kahesama.demo.curso_spring_s12_api.controllers;
 
-import com.kahesama.demo.curso_spring_s12_api.model.mappers.ProductRestMapper;
+import com.kahesama.demo.curso_spring_s12_api.model.mappers.rest.ProductRestMapper;
 import com.kahesama.demo.curso_spring_s12_api.model.request.ProductCreateRequest;
 import com.kahesama.demo.curso_spring_s12_api.model.response.ProductResponse;
 import com.kahesama.demo.curso_spring_s12_api.services.interfaces.ProductServiceInt;
