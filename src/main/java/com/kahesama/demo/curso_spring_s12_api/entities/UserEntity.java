@@ -1,5 +1,6 @@
 package com.kahesama.demo.curso_spring_s12_api.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.kahesama.demo.curso_spring_s12_api.model.Role;
 import jakarta.persistence.*;
 import lombok.*;
@@ -25,10 +26,12 @@ public class UserEntity {
 
     @CreationTimestamp
     @Column(name = "create_at")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Date createAt; // Se generará automáticamente al crear la entidad
 
     @UpdateTimestamp
     @Column(name = "updated_at")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Date updatedAt; // Se actualizará automáticamente al modificar la entidad
 
     /**
@@ -50,5 +53,11 @@ public class UserEntity {
     private Boolean enabled;
 
     @Column
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
+
+    @PrePersist
+    public void prePersist(){
+        enabled = true;
+    }
 }

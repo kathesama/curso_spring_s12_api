@@ -7,13 +7,17 @@ import java.util.List;
 public interface UserServiceInt {
     List<User> findAll();
 
-//    Product findById(Long id);
-//
+    User findById(Long id);
+
     User save(User product);
-//
+
+    boolean existsByUsername(String username);
+
+    User findByUsername(String username);
+
+    void deleteById(Long id);
 //    Product update(Long id, Product product);
 //
-//    void deleteById(Long id);
 //
 //    boolean existsBySku(String sku);
 

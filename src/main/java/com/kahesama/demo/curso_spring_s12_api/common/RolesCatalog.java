@@ -8,8 +8,10 @@ public enum RolesCatalog {
     ADMIN("ROLE_ADMIN");
 
     private final String name;
+    private final String simpleName;
 
     RolesCatalog(String code) {
         this.name = code;
+        this.simpleName = code.substring(5);
     }
 }

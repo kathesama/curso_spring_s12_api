@@ -6,8 +6,8 @@ import org.springframework.context.annotation.PropertySources;
 
 @Configuration
 @PropertySources({
-        @PropertySource(value = "classpath:messages.properties", encoding = "ISO8859-1"),
-        @PropertySource(value = "classpath:configuration.properties", encoding = "ISO8859-1"),
+        @PropertySource(value = "classpath:messages.properties", encoding = "UTF-8"),
+        @PropertySource(value = "classpath:configuration.properties", encoding = "UTF-8"),
 })
 public class AppConfig {
 }

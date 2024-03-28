@@ -1,5 +1,6 @@
 package com.kahesama.demo.curso_spring_s12_api.model;
 
+import com.kahesama.demo.curso_spring_s12_api.entities.RoleEntity;
 import lombok.*;
 
 import java.util.Date;
@@ -17,4 +18,5 @@ public class User {
     private String username;
     private String password;
     private Boolean enabled;
+    private List<RoleEntity> roles;
 }

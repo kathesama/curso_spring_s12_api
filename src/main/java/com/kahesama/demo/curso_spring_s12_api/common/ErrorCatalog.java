@@ -5,8 +5,10 @@ import lombok.Getter;
 @Getter
 public enum ErrorCatalog {
     GENERIC_ERROR("ERR_GEN_001", "An unexpected error occurred."),
-    PRODUCT_NOT_FOUND("ERR_PRODUCT_001", "ProductEntity not found."),
-    INVALID_PRODUCT("ERR_PRODUCT_002", "Invalid product parameters.");
+    PRODUCT_NOT_FOUND("ERR_PRODUCT_001", "Product not found."),
+    USER_NOT_FOUND("ERR_USER_001", "User not found."),
+    INVALID_PARAMS("ERR_HANDLER_001", "Invalid given parameters."),
+    ACCESS_DENIED("ERR_ACCESS_001", "Access Denied or Forbidden");
 
     private final String code;
     private final String message;

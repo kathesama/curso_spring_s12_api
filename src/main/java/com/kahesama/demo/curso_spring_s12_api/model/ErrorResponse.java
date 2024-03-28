@@ -7,7 +7,7 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Builder
+@Builder(toBuilder = true)
 @Getter
 @Setter
 public class ErrorResponse {

@@ -8,10 +8,12 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins="http://localhost:4200", originPatterns = "*")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/products")
@@ -20,16 +22,19 @@ public class ProductController {
     private final ProductRestMapper productMapper;
 
     @GetMapping("/v1/api")
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     public List<ProductResponse> findAll() {
         return productMapper.toProductResponseList(productService.findAll());
     }
 
     @GetMapping("/v1/api/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     public ProductResponse findById(@PathVariable Long id) {
         return productMapper.toProductResponse(productService.findById(id));
     }
 
     @PostMapping("/v1/api")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<ProductResponse> create(@Valid @RequestBody ProductCreateRequest productRequest) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(
@@ -42,6 +47,7 @@ public class ProductController {
     }
 
     @PutMapping("/v1/api/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ProductResponse update(@PathVariable Long id, @Valid @RequestBody ProductCreateRequest productRequest) {
         return productMapper.toProductResponse(
                 productService.update(id, productMapper.toProduct(productRequest)
@@ -50,6 +56,7 @@ public class ProductController {
     }
 
     @DeleteMapping("/v1/api/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public void delete(@PathVariable Long id) {
         productService.deleteById(id);
     }

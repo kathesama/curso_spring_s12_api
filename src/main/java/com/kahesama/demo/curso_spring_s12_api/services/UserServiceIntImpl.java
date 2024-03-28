@@ -1,9 +1,8 @@
 package com.kahesama.demo.curso_spring_s12_api.services;
 
-import com.kahesama.demo.curso_spring_s12_api.common.RolesCatalog;
 import com.kahesama.demo.curso_spring_s12_api.entities.RoleEntity;
 import com.kahesama.demo.curso_spring_s12_api.entities.UserEntity;
-import com.kahesama.demo.curso_spring_s12_api.model.Role;
+import com.kahesama.demo.curso_spring_s12_api.exceptions.UserNotFoundException;
 import com.kahesama.demo.curso_spring_s12_api.model.User;
 import com.kahesama.demo.curso_spring_s12_api.model.mappers.persistence.UserPersistenceMapper;
 import com.kahesama.demo.curso_spring_s12_api.repositories.RoleRepository;
@@ -14,7 +13,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -59,15 +57,38 @@ public class UserServiceIntImpl implements UserServiceInt {
         return mapper.toUser(repository.save(userEntity));
     }
 
-    /*
+
     @Transactional(readOnly = true)
     @Override
     public User findById(Long id) {
-        return repository.findById(id).map(mapper::toUser)
+        return repository.findById(id)
+                .map(mapper::toUser)
                 .orElseThrow(UserNotFoundException::new);
     }
 
+    @Override
+    public boolean existsByUsername(String username) {
+        return repository.existsByUsername(username);
+    }
 
+    @Override
+    public User findByUsername(String username) {
+        return repository.findByUsername(username)
+                .map(mapper::toUser)
+                .orElseThrow(() -> new UserNotFoundException(String.format("Username %s no existe en el sistema!", username)));
+    }
+
+    @Transactional
+    @Override
+    public void deleteById(Long id) {
+        if(repository.findById(id).isEmpty()){
+            throw new UserNotFoundException();
+        }
+
+        repository.deleteById(id);
+    }
+
+/*
     @Transactional
     @Override
     public User update(Long id, User UserParam) {
@@ -82,15 +103,7 @@ public class UserServiceIntImpl implements UserServiceInt {
                 }).orElseThrow(UserNotFoundException::new);
     }
 
-    @Transactional
-    @Override
-    public void deleteById(Long id) {
-        if(repository.findById(id).isEmpty()){
-            throw new UserNotFoundException();
-        }
 
-        repository.deleteById(id);
-    }
 
     @Transactional(readOnly = true)
     @Override
