@@ -27,8 +27,6 @@ import org.springframework.web.filter.CorsFilter;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.kahesama.demo.curso_spring_s12_api.common.RolesCatalog.ADMIN;
-import static com.kahesama.demo.curso_spring_s12_api.common.RolesCatalog.USER;
 import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
