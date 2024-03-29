@@ -53,6 +53,7 @@ public class SpringSecurityConfig {
                 .authorizeHttpRequests((authorize) -> authorize
 
                     .requestMatchers(HttpMethod.GET, "/users/v1/api", "/users/v1/api/{id}").permitAll()
+//                    .requestMatchers(HttpMethod.POST, "/users/v1/api").permitAll()
                     .requestMatchers(HttpMethod.POST, "/users/v1/api/register").permitAll() //cualquier puede usar este endpoint
 //                    .requestMatchers(HttpMethod.POST, "/users/v1/api").hasRole(ADMIN.getSimpleName()) // create solo para admins
 //                    .requestMatchers(HttpMethod.DELETE, "/users/v1/api").hasRole(ADMIN.getSimpleName()) // eliminar solo para admins
